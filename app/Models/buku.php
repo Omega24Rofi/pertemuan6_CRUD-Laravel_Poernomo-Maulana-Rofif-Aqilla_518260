@@ -9,4 +9,11 @@ class buku extends Model
 {
     protected $table = 'books';
 
+    protected $fillable = [
+        'judul',
+        'penulis',
+        'harga',
+        'tgl_terbit',
+    ];
+
 }

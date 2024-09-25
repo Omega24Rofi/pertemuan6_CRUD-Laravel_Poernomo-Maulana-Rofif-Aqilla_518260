@@ -11,6 +11,7 @@
     <div class="container mt-5">
         <table class="table table-stripped">
             <h1 class="mb-4">Book Lists</h1>
+            <a href="{{ route('buku.create')}}" class="btn btn-primary float-start">Tambah Buku</a>
             <thead>
                 <tr>
                     <th>id</th>
@@ -29,6 +30,16 @@
                     <td>{{ $buku->penulis }}</td>
                     <td>{{ "Rp. ". number_format($buku->harga, 2, ',', '.') }}</td>
                     <td>{{ $buku->tgl_terbit}}</td>
+                    <td>
+                        <form action="{{ route('buku.destroy', $buku->id)}}" method = "post">
+                            @csrf
+                            @method('DELETE')
+                            <button onclick="return confirm('Apakah data ini mau dihapus?')" type="submit" class="btn btn-danger">Hapus</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="{{ route('buku.edit', $buku->id)}}" class="btn btn-secondary">Update</a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
